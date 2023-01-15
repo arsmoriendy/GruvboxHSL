@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body thead,
+body td {
+  border: 1px solid black;
+}
+body table {
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+body table thead {
+  background-color: blue;
+}
+body table td {
+  padding: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,27 @@
+$theadBg: blue;
+$borderColor: black;
+
+body {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+
+  thead,
+  td {
+    border: 1px solid $borderColor;
+  }
+
+  table {
+    border: 3px solid $borderColor;
+    border-collapse: collapse;
+
+    thead {
+      background-color: $theadBg;
+    }
+
+    td {
+      padding: 10px;
+    }
+  }
+}
