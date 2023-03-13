@@ -6,22 +6,34 @@ body {
   gap: 10px;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
-
-  thead,
-  td {
-    border: 1px solid $borderColor;
-  }
+  background-color: lighten($borderColor, 50);
 
   table {
     border: 3px solid $borderColor;
     border-collapse: collapse;
 
+    thead,
+    td {
+      border: 1px solid $borderColor;
+    }
+
     thead {
-      background-color: $theadBg;
+      background-color: lighten($borderColor, 20);
+      color: invert($borderColor);
     }
 
     td {
+      position: relative;
       padding: 10px;
+
+      .copyBtn {
+        display: none;
+        position: absolute;
+        right: 0;
+      }
+      &:hover .copyBtn {
+        display: initial;
+      }
     }
   }
 }
