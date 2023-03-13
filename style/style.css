@@ -13,7 +13,7 @@ body table {
   border-collapse: collapse;
 }
 body table thead {
-  background-color: blue;
+  background-color: green;
 }
 body table td {
   padding: 10px;
