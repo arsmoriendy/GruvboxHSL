@@ -26,13 +26,15 @@ body {
       position: relative;
       padding: 10px;
 
-      .copyBtn {
-        display: none;
-        position: absolute;
-        right: 0;
-      }
-      &:hover .copyBtn {
-        display: initial;
+      &[bgcolor] {
+        .copyBtn {
+          display: none;
+          position: absolute;
+          right: 0;
+        }
+        &:hover .copyBtn {
+          display: initial;
+        }
       }
     }
   }

@@ -21,12 +21,12 @@ body table td {
   position: relative;
   padding: 10px;
 }
-body table td .copyBtn {
+body table td[bgcolor] .copyBtn {
   display: none;
   position: absolute;
   right: 0;
 }
-body table td:hover .copyBtn {
+body table td[bgcolor]:hover .copyBtn {
   display: initial;
 }
 
