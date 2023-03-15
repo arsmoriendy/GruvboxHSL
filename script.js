@@ -1,6 +1,6 @@
 window.addEventListener("load", e => {
-  [... document.querySelectorAll("td")].filter(td => td.attributes["bgcolor"]).forEach(td => {
-    const color = td.innerText;
+  [... document.querySelectorAll("td.color")].forEach(td => {
+    const color = td.textContent;
 
     const copyBtn = document.createElement("button");
     copyBtn.setAttribute("class", "copyBtn");
