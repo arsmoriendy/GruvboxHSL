@@ -1,25 +1,72 @@
-$theadBg: green;
-$borderColor: black;
-
 body {
+  // dark background colors
+  --bg0: hsl(195 6% 12%);
+  --bg1: hsl(19 5% 22%);
+  --bg2: hsl(21 7% 29%);
+
+  // dark foreground colors
+  --fg0: hsl(47 86% 88%);
+  --fg1: hsl(43 58% 81%);
+  --fg2: hsl(39 38% 73%);
+
+  &.light {
+    // light background colors
+    --bg0: hsl(53 73% 91%);
+    --bg1: hsl(43 58% 81%);
+    --bg2: hsl(39 38% 73%);
+
+    // light foreground colors
+    --fg0: hsl(0 0% 15%);
+    --fg1: hsl(19 5% 22%);
+    --fg2: hsl(21 7% 29%);
+  }
+
   display: flex;
   gap: 10px;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: lighten($borderColor, 50);
+  background-color: var(--bg0);
+  color: var(--fg0);
+
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    div.left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      h1 {
+        margin: 0;
+      }
+    }
+
+    div.right {
+      div.theme {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #toggleThemeButton {
+        all: unset;
+        border-style: solid;
+        border-width: 2px;
+        aspect-ratio: 1 / 1;
+        width: 1em;
+        border-radius: 100%;
+      }
+    }
+  }
 
   table {
-    border: 3px solid $borderColor;
+    border: 3px solid var(--bg1);
     border-collapse: collapse;
 
     thead,
     td {
-      border: 1px solid $borderColor;
-    }
-
-    thead {
-      background-color: lighten($borderColor, 20);
-      color: invert($borderColor);
+      border: 1px solid var(--bg1);
     }
 
     td {
@@ -27,6 +74,8 @@ body {
       padding: 10px;
 
       &.color {
+        background-color: transparent;
+
         .colorBackground {
           position: absolute;
           height: 100%;
