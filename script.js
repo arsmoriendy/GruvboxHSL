@@ -14,10 +14,10 @@ window.addEventListener("load", () => {
     element.querySelector(".dropdownOptionButton").addEventListener("click", () => toggleActive(element));
   })
 
+  // toggle theme
   let lightMode = localStorage["lightMode"] === undefined ? false : JSON.parse(localStorage["lightMode"]);
   updateTheme(lightMode);
-
-  // toggle theme
+  
   const toggleTheme = document.querySelector("#toggleTheme");
   toggleTheme.addEventListener("click", e => {
     lightMode = !lightMode;
@@ -107,10 +107,15 @@ function addCopyButtons() {
     const copyBtn = document.createElement("button");
     copyBtn.setAttribute("class", "copyBtn");
     copyBtn.addEventListener("click", e => {
-      navigator.clipboard.writeText(color)
+      const initalText = e.target.innerText;
+      e.target.innerText = "";
+      setTimeout(() => {
+        e.target.innerText = initalText;
+      }, 5000);
+      navigator.clipboard.writeText(color);
     })
-    copyBtn.innerText = "Copy"
-    td.appendChild(copyBtn)
+    copyBtn.innerText = "󱉨";
+    td.appendChild(copyBtn);
   })
 }
 

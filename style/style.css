@@ -199,9 +199,22 @@ body table td.color .colorBackground {
   z-index: -1;
 }
 body table td.color .copyBtn {
+  all: unset;
   display: none;
   position: absolute;
-  right: 0;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  --size: 30px;
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--fg0);
+  color: var(--bg0);
+  border: 1px solid var(--fg2);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
 }
 body table td.color:hover .copyBtn {
   display: initial;
