@@ -11,22 +11,50 @@
 
   <body>
     <header>
-      <div class="left">
+      <section class="left">
         <h1>GruvBox Color Table</h1>
         <small><i>with HSL color space!</i></small>
-      </div>
-      <div class="right">
-        <div class="theme">
-          <label for="toggleThemeButton">Theme: </label>
-          <button id="toggleThemeButton"></button>
+      </section>
+      <section class="right">
+        <div class="options">
+          <!-- button -->
+          <button></button>
+          <!-- content -->
+          <div class="content">
+            <div class="lightMode option">
+              <label for="toggleTheme">Light Mode</label>
+              <input type="checkbox" id="toggleTheme">
+            </div>
+
+            <div class="showTable dropdownOption">
+              <div class="dropdownOptionButton option">
+                <div>Show Table</div>
+                <div></div>
+              </div>
+              <div class="dropdownOptionContent">
+                <div class="option">
+                  <label for="toggleShowDarkTable">Dark</label>
+                  <input type="checkbox" id="toggleShowDarkTable">
+                </div>
+
+                <div class="option">
+                  <label for="toggleShowLightTable">Light</label>
+                  <input type="checkbox" id="toggleShowLightTable">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- modal -->
+          <section class="modal"></section>
         </div>
-      </div>
+      </section>
     </header>
-    <table>
+
+    <table id="darkTable">
       <thead>
         <tr>
           <td colspan="7"  align="center">
-            <b>Dark Mode</b>
+            <b>Dark Table</b>
           </td>
         </tr>
         <tr>
@@ -214,11 +242,11 @@
         </tbody>
     </table>
 
-    <table>
+    <table id="lightTable">
       <thead>
         <tr>
           <td colspan="7"  align="center">
-            <b>Light Mode</b>
+            <b>Light Table</b>
           </td>
         </tr>
         <tr>

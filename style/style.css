@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Caskaydia Cove Mono";
+  src: url("../assets/fonts/Caskaydia Cove Nerd Font Complete Mono Regular.otf");
+}
 body {
   --bg0: hsl(195 6% 12%);
   --bg1: hsl(19 5% 22%);
@@ -8,7 +12,7 @@ body {
   display: flex;
   gap: 10px;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Caskaydia Cove Mono";
   background-color: var(--bg0);
   color: var(--fg0);
 }
@@ -20,34 +24,160 @@ body.light {
   --fg1: hsl(19 5% 22%);
   --fg2: hsl(21 7% 29%);
 }
+body a, body a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+body input[type=checkbox] {
+  --height: 16px;
+  appearance: none;
+  position: relative;
+  width: calc(var(--height) * 2);
+  height: var(--height);
+  border: 2px solid var(--bg2);
+  border-radius: 10px;
+  margin: 0;
+  box-sizing: content-box;
+}
+body input[type=checkbox]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid var(--bg0);
+  border-radius: var(--height);
+  background-color: var(--bg2);
+  width: var(--height);
+  height: var(--height);
+  box-sizing: border-box;
+  transition: transform 0.3s;
+}
+body input[type=checkbox]:checked {
+  border-color: var(--fg0);
+}
+body input[type=checkbox]:checked::before {
+  transform: translateX(var(--height));
+  background-color: var(--fg0);
+}
 body header {
   display: flex;
   justify-content: space-between;
 }
-body header div.left {
+body header section.left {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-body header div.left h1 {
+body header section.left h1 {
   margin: 0;
 }
-body header div.right div.theme {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+body header section.right {
+  position: relative;
+  display: grid;
+  place-items: center;
 }
-body header div.right #toggleThemeButton {
+body header section.right .options > button {
   all: unset;
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 30px;
+  color: var(--bg2);
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: color 0.3s, background-color 0.3s;
+  z-index: 3;
+}
+body header section.right .options > button:hover {
+  color: var(--fg0);
+}
+body header section.right .options > .content {
+  display: none;
+  width: 240px;
+  position: absolute;
+  right: 0;
+  top: 53px;
+  flex-direction: column;
+  padding: 10px;
+  background-color: var(--bg0);
+  border: 3px solid var(--bg1);
+  z-index: 3;
+}
+body header section.right .options > .content .option {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+}
+body header section.right .options > .content .dropdownOption .dropdownOptionButton {
+  cursor: pointer;
+}
+body header section.right .options > .content .dropdownOption .dropdownOptionContent {
+  display: none;
+}
+body header section.right .options > .content .dropdownOption.active {
   border-style: solid;
-  border-width: 2px;
-  aspect-ratio: 1/1;
-  width: 1em;
-  border-radius: 100%;
+  border-width: 2px 0;
+  border-color: var(--bg1);
+}
+body header section.right .options > .content .dropdownOption.active:first-child {
+  border-width: 0 0 2px 0;
+}
+body header section.right .options > .content .dropdownOption.active:last-child {
+  border-width: 2px 0 0 0;
+}
+body header section.right .options > .content .dropdownOption.active + .dropdownOption.active {
+  border-width: 0 0 2px 0;
+}
+body header section.right .options > .content .dropdownOption.active + .dropdownOption.active:last-child {
+  border-width: 0;
+}
+body header section.right .options > .content .dropdownOption.active .dropdownOptionContent {
+  display: initial;
+}
+body header section.right .options > .content .dropdownOption.active .dropdownOptionContent .option {
+  padding-left: 20px;
+}
+body header section.right .options > .content::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 7px;
+  width: 0;
+  height: 0;
+  --size: 10px;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid var(--bg1);
+}
+body header section.right .options > .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: none;
+}
+body header section.right .options.active > button {
+  background-color: var(--fg0);
+  color: var(--bg0);
+}
+body header section.right .options.active > .content {
+  display: flex;
+}
+body header section.right .options.active > .modal {
+  display: initial;
 }
 body table {
+  display: none;
   border: 3px solid var(--bg1);
   border-collapse: collapse;
+}
+body table.active {
+  display: initial;
 }
 body table thead,
 body table td {
