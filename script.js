@@ -1,5 +1,9 @@
 window.addEventListener("load", () => {
-  addCopyButtons();
+  const colorTds = [... document.querySelectorAll("td.color")];
+  colorTds.forEach(td => {
+    // add copy buttons
+    addCopyButton(td);
+  });
 
   // toggle options
   const options = document.querySelector(".options");
@@ -17,7 +21,7 @@ window.addEventListener("load", () => {
   // toggle theme
   let lightMode = localStorage["lightMode"] === undefined ? false : JSON.parse(localStorage["lightMode"]);
   updateTheme(lightMode);
-  
+
   const toggleTheme = document.querySelector("#toggleTheme");
   toggleTheme.addEventListener("click", e => {
     lightMode = !lightMode;
@@ -100,22 +104,18 @@ function updateTheme(lightMode) {
   localStorage["lightMode"] = lightMode;
 };
 
-function addCopyButtons() {
-  [... document.querySelectorAll("td.color")].forEach(td => {
-    const color = td.textContent;
-
-    const copyBtn = document.createElement("button");
-    copyBtn.setAttribute("class", "copyBtn");
-    copyBtn.addEventListener("click", e => {
-      const initalText = e.target.innerText;
-      e.target.innerText = "";
-      setTimeout(() => {
-        e.target.innerText = initalText;
-      }, 5000);
-      navigator.clipboard.writeText(color);
-    })
-    copyBtn.innerText = "󱉨";
-    td.appendChild(copyBtn);
+function addCopyButton(td) {
+  const copyBtn = document.createElement("button");
+  copyBtn.setAttribute("class", "copyBtn");
+  copyBtn.innerText = "󱉨";
+  copyBtn.addEventListener("click", e => {
+    const initalText = e.target.innerText;
+    e.target.innerText = "";
+    setTimeout(() => {
+      e.target.innerText = initalText;
+    }, 5000);
+    navigator.clipboard.writeText(e.target.parentElement.childNodes[0].nodeValue);
   })
+  td.appendChild(copyBtn);
 }
 
