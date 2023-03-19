@@ -218,19 +218,15 @@ body {
   table {
     display: none;
     &.active {
-      display: initial;
+      display: table;
     }
     border: 3px solid var(--bg1);
     border-collapse: collapse;
 
-    thead,
-    td {
-      border: 1px solid var(--bg1);
-    }
-
     td {
       position: relative;
       padding: 10px;
+      border: 1px solid var(--bg1);
 
       &.color {
         background-color: transparent;

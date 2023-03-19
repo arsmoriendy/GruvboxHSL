@@ -177,15 +177,12 @@ body table {
   border-collapse: collapse;
 }
 body table.active {
-  display: initial;
-}
-body table thead,
-body table td {
-  border: 1px solid var(--bg1);
+  display: table;
 }
 body table td {
   position: relative;
   padding: 10px;
+  border: 1px solid var(--bg1);
 }
 body table td.color {
   background-color: transparent;
