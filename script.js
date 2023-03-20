@@ -109,10 +109,9 @@ function addCopyButton(td) {
   copyBtn.setAttribute("class", "copyBtn");
   copyBtn.innerText = "󱉨";
   copyBtn.addEventListener("click", e => {
-    const initalText = e.target.innerText;
     e.target.innerText = "";
     setTimeout(() => {
-      e.target.innerText = initalText;
+      e.target.innerText = "󱉨";
     }, 5000);
     navigator.clipboard.writeText(e.target.parentElement.childNodes[0].nodeValue);
   })
