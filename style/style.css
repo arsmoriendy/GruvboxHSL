@@ -105,11 +105,22 @@ body header section.right .options > .content {
   border: 3px solid var(--bg1);
   z-index: 3;
 }
+body header section.right .options > .content::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 7px;
+  width: 0;
+  height: 0;
+  --size: 10px;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid var(--bg1);
+}
 body header section.right .options > .content .option {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-radius: 10px;
 }
 body header section.right .options > .content .dropdownOption .dropdownOptionButton {
   cursor: pointer;
@@ -122,10 +133,10 @@ body header section.right .options > .content .dropdownOption.active {
   border-width: 2px 0;
   border-color: var(--bg1);
 }
-body header section.right .options > .content .dropdownOption.active:first-child {
+body header section.right .options > .content .dropdownOption.active:first-of-type {
   border-width: 0 0 2px 0;
 }
-body header section.right .options > .content .dropdownOption.active:last-child {
+body header section.right .options > .content .dropdownOption.active:last-of-type {
   border-width: 2px 0 0 0;
 }
 body header section.right .options > .content .dropdownOption.active + .dropdownOption.active {
@@ -140,17 +151,58 @@ body header section.right .options > .content .dropdownOption.active .dropdownOp
 body header section.right .options > .content .dropdownOption.active .dropdownOptionContent .option {
   padding-left: 20px;
 }
-body header section.right .options > .content::after {
-  content: "";
+body header section.right .options > .content .footer {
+  border-top: 2px solid var(--bg1);
+  justify-content: space-evenly;
+  gap: 20px;
+  padding-bottom: 0;
+}
+body header section.right .options > .content .footer a {
+  position: relative;
+  --size: 30px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  background-color: var(--bg2);
+  color: var(--fg2);
+}
+body header section.right .options > .content .footer a::before {
   position: absolute;
-  top: -10px;
-  right: 7px;
-  width: 0;
-  height: 0;
-  --size: 10px;
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid var(--bg1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+body header section.right .options > .content .footer a::after {
+  display: none;
+}
+body header section.right .options > .content .footer a:hover::after {
+  display: block;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg2);
+  color: var(--fg2);
+  font-size: 11px;
+  padding: 5px;
+  border-radius: 5px;
+}
+body header section.right .options > .content .footer a.github::before {
+  content: "\e708";
+}
+body header section.right .options > .content .footer a.github::after {
+  content: "GitHub";
+}
+body header section.right .options > .content .footer a.kofi::before {
+  content: "\f155";
+}
+body header section.right .options > .content .footer a.kofi::after {
+  content: "Donate";
+}
+body header section.right .options > .content .footer a:hover {
+  background-color: var(--fg2);
+  color: var(--bg2);
 }
 body header section.right .options > .modal {
   position: fixed;

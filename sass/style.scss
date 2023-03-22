@@ -130,11 +130,24 @@ body {
           border: 3px solid var(--bg1);
           z-index: 3;
 
+          // arrow
+          &::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: 7px;
+            width: 0;
+            height: 0;
+            --size: 10px;
+            border-left: var(--size) solid transparent;
+            border-right: var(--size) solid transparent;
+            border-bottom: var(--size) solid var(--bg1);
+          }
+
           .option {
             display: flex;
             justify-content: space-between;
             padding: 10px;
-            border-radius: 10px;
           }
 
           .dropdownOption {
@@ -147,12 +160,13 @@ body {
             }
 
             &.active {
-              &:first-child {
+              &:first-of-type {
                 border-width: 0 0 2px 0;
               }
-              &:last-child {
+              &:last-of-type {
                 border-width: 2px 0 0 0;
               }
+              // &+&
               &+.dropdownOption.active {
                 border-width: 0 0 2px 0;
                 &:last-child {
@@ -171,18 +185,58 @@ body {
             }
           }
 
-          // arrow
-          &::after {
-            content: "";
-            position: absolute;
-            top: -10px;
-            right: 7px;
-            width: 0;
-            height: 0;
-            --size: 10px;
-            border-left: var(--size) solid transparent;
-            border-right: var(--size) solid transparent;
-            border-bottom: var(--size) solid var(--bg1);
+          .footer {
+            border-top: 2px solid var(--bg1);
+            justify-content: space-evenly;
+            gap: 20px;
+            padding-bottom: 0;
+
+            a {
+              position: relative;
+              --size: 30px;
+              width: var(--size);
+              height: var(--size);
+              border-radius: var(--size);
+              background-color: var(--bg2);
+              color: var(--fg2);
+
+              &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 20px;
+              }
+              &::after {
+                display: none;
+              }
+              &:hover::after {
+                display: block;
+                position: absolute;
+                bottom: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--bg2);
+                color: var(--fg2);
+                font-size: 11px;
+                padding: 5px;
+                border-radius: 5px;
+              }
+              // contents
+              &.github {
+                &::before {content: "";}
+                &::after {content: "GitHub";}
+              }
+              &.kofi {
+                &::before {content: "";}
+                &::after {content: "Donate";}
+              }
+              // hover
+              &:hover {
+                background-color: var(--fg2);
+                color: var(--bg2);
+              }
+            }
           }
         }
 
