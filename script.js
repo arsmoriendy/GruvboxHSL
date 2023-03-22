@@ -1,8 +1,50 @@
+const filters = {};
+// init format
+if (localStorage["filters"]) {
+  const parsedLocalStorageFilters = JSON.parse(localStorage["filters"])
+  filters.roundFloats = parsedLocalStorageFilters.roundFloats;
+  filters.spaceSeparators = parsedLocalStorageFilters.spaceSeparators;
+} else {
+  // defaults
+  filters.roundFloats = false;
+  filters.spaceSeparators = false;
+}
+
 window.addEventListener("load", () => {
   const colorTds = [... document.querySelectorAll("td.color")];
+  // td init
   colorTds.forEach(td => {
     // add copy buttons
     addCopyButton(td);
+    // init color
+    td.color = td.childNodes[0].nodeValue;
+    // filter methods:
+    td.roundFloats = function(color) {
+      // only for hsl
+      if (color[0] === "h") {
+        const splitter = color.includes(",") ? "," : " ";
+        const splitColor = color.slice(4, -1).split(splitter);
+        let formattedColor = `hsl(${splitColor[0]}`;
+          for (let i = 1; i < splitColor.length; i++) {
+            formattedColor = formattedColor.concat(splitter, `${Math.round(parseFloat(splitColor[i].slice(0, -1)))}%`);
+          }
+          return formattedColor + ")";
+      }
+      return color;
+    }
+    td.spaceSeparators = function(color) {
+      return color.replaceAll(",", " ");
+    }
+    td.applyFilters = function (filters) {
+      let color = td.color;
+      Object.keys(filters).forEach(filter => {
+        if (filters[filter]) {
+          color = td[filter](color);
+        }
+      });
+      td.childNodes[0].nodeValue = color;
+    }
+    td.applyFilters(filters);
   });
 
   // toggle options
@@ -74,6 +116,28 @@ window.addEventListener("load", () => {
       addActive(darkTable);
     }
     updateTableChecksAndLocalStorage();
+  })
+
+  // toggle floats
+  const roundFloats = document.querySelector('#roundFloats');
+  roundFloats.addEventListener('click', e => {
+    filters.roundFloats = !filters.roundFloats;
+    colorTds.forEach(td => {
+      td.applyFilters(filters);
+    });
+    e.target.checked = filters.roundFloats;
+    localStorage["filters"] = JSON.stringify(filters)
+  })
+
+  // toggle comma separators
+  const spaceSeparators = document.querySelector('#spaceSeparators');
+  spaceSeparators.addEventListener('click', e => {
+    filters.spaceSeparators = !filters.spaceSeparators;
+    colorTds.forEach(td => {
+      td.applyFilters(filters);
+    });
+    e.target.checked = filters.spaceSeparators;
+    localStorage["filters"] = JSON.stringify(filters)
   })
 })
 
