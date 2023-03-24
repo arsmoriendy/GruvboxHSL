@@ -153,6 +153,10 @@ body {
           .dropdownOption {
             .dropdownOptionButton {
               cursor: pointer;
+              &::after {
+                content: "";
+                transition: transform .2s ease;
+              }
             }
 
             .dropdownOptionContent {
@@ -176,6 +180,13 @@ body {
               border-style: solid;
               border-width: 2px 0;
               border-color: var(--bg1);
+
+              .dropdownOptionButton {
+                &::after {
+                  transform: rotate(180deg);
+                }
+              }
+
               .dropdownOptionContent {
                 display: initial;
                 .option {
