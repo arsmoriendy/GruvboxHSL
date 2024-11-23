@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "sass": "^1.57.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }
