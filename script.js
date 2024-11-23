@@ -20,6 +20,7 @@ window.addEventListener("load", () => {
     td.color = td.childNodes[0].nodeValue;
     // filter methods:
     td.roundFloats = function (color) {
+      color = color.trim();
       // only for hsl
       if (color[0] === "h") {
         const splitter = color.includes(",") ? "," : " ";
