@@ -187,7 +187,7 @@ function addCopyButton(td) {
       e.target.innerText = "󱉨";
     }, 5000);
     navigator.clipboard.writeText(
-      e.target.parentElement.childNodes[0].nodeValue,
+      e.target.parentElement.childNodes[0].nodeValue.trim(),
     );
   });
   td.appendChild(copyBtn);
