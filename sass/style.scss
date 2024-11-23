@@ -1,10 +1,5 @@
 @use "sass:color";
 
-@font-face {
-  font-family: "Caskaydia Cove Mono";
-  src: url("../assets/fonts/Caskaydia Cove Nerd Font Complete Mono Regular.otf");
-}
-
 body {
   // dark background colors
   --bg0: hsl(195 6% 12%);
@@ -72,7 +67,9 @@ body {
   display: flex;
   gap: 10px;
   flex-direction: column;
-  font-family: "Caskaydia Cove Mono";
+  font-family: "Hind", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: var(--bg0);
   color: var(--fg0);
 
@@ -87,6 +84,8 @@ body {
 
       h1 {
         margin: 0;
+        margin-bottom: -0.7rem;
+        font-family: "Kumar One", serif;
       }
     }
 
@@ -213,12 +212,12 @@ body {
               background-color: var(--bg2);
               color: var(--fg2);
 
-              &::before {
+              & svg {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                font-size: 20px;
+                height: 1em;
               }
               &::after {
                 display: none;
@@ -237,17 +236,11 @@ body {
               }
               // contents
               &.github {
-                &::before {
-                  content: "";
-                }
                 &::after {
                   content: "GitHub";
                 }
               }
               &.kofi {
-                &::before {
-                  content: "";
-                }
                 &::after {
                   content: "Donate";
                 }
@@ -305,6 +298,10 @@ body {
 
       &.color {
         background-color: transparent;
+        font-family: "JetBrains Mono", monospace;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-weight: bold;
 
         .colorBackground {
           position: absolute;
@@ -329,13 +326,16 @@ body {
           color: var(--fg0);
           border: 1px solid var(--bg1);
           border-radius: 10px;
-          text-align: center;
-          font-size: 24px;
           cursor: pointer;
+          place-items: center;
+
+          & svg {
+            height: 1em;
+          }
         }
 
         &:hover .copyBtn {
-          display: initial;
+          display: grid;
         }
       }
     }
