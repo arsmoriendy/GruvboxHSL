@@ -189,9 +189,8 @@ function addCopyButton(td) {
     setTimeout(() => {
       e.target.innerHTML = copySVG;
     }, 5000);
-    navigator.clipboard.writeText(
-      e.target.parentElement.childNodes[0].nodeValue.trim(),
-    );
+    const colorVal = td.childNodes[0].nodeValue.trim();
+    navigator.clipboard.writeText(colorVal);
   });
   td.appendChild(copyBtn);
 }
