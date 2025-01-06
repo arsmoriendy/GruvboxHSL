@@ -185,9 +185,9 @@ function addCopyButton(td) {
   copyBtn.setAttribute("class", "copyBtn");
   copyBtn.innerHTML = copySVG;
   copyBtn.addEventListener("click", (e) => {
-    e.target.innerHTML = checkSVG;
+    e.currentTarget.innerHTML = checkSVG;
     setTimeout(() => {
-      e.target.innerHTML = copySVG;
+      e.currentTarget.innerHTML = copySVG;
     }, 5000);
     const colorVal = td.childNodes[0].nodeValue.trim();
     navigator.clipboard.writeText(colorVal);
