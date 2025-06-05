@@ -1,5 +1,8 @@
 # GruvBoxHSL
 
+> [!WARNING]
+> This project has been deprecated. New version can be found [>> here <<](https://arsmoriendy.github.io/gruvbox-cheatsheet/). This version will not be taken down.
+
 ### Live View:
 
 https://arsmoriendy.github.io/GruvboxHSL/
