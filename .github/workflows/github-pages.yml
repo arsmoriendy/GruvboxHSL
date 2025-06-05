@@ -1,3 +1,5 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
 name: github-pages
 on: push
 jobs:
@@ -10,12 +12,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18.12.0
       - run: npm install
       - run: npm run compile
-      - uses: actions/jekyll-build-pages@v1
-      - uses: actions/upload-pages-artifact@v1
-      - uses: actions/deploy-pages@v1
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+      - id: deployment
+        uses: actions/deploy-pages@v4
