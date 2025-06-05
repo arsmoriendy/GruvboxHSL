@@ -5,22 +5,26 @@ body {
   --bg0: hsl(195 6% 12%);
   --bg1: hsl(19 5% 22%);
   --bg2: hsl(21 7% 29%);
+  --bg-warn: hsl(40, 73.4%, 48.6%);
 
   // dark foreground colors
   --fg0: hsl(47 86% 88%);
   --fg1: hsl(43 58% 81%);
   --fg2: hsl(39 38% 73%);
+  --fg-warn: var(--bg0);
 
   &.light {
     // light background colors
     --bg0: hsl(53 73% 91%);
     --bg1: hsl(43 58% 81%);
     --bg2: hsl(39 38% 73%);
+    --bg-warn: hsl(40, 73.4%, 48.6%);
 
     // light foreground colors
     --fg0: hsl(0 0% 15%);
     --fg1: hsl(19 5% 22%);
     --fg2: hsl(21 7% 29%);
+    --fg-warn: var(--fg0);
   }
 
   a,
@@ -342,6 +346,42 @@ body {
           display: grid;
         }
       }
+    }
+  }
+
+  .callout {
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      line-height: 1;
+    }
+
+    &.warn {
+      color: var(--fg-warn);
+      background-color: var(--bg-warn);
+
+      &#deprecate-dialog {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "JetBrains Mono", monospace;
+      }
+    }
+  }
+
+  .close-btn {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover span {
+      text-decoration: underline;
     }
   }
 }

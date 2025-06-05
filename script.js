@@ -197,3 +197,20 @@ function addCopyButton(td) {
   });
   td.appendChild(copyBtn);
 }
+
+window.addEventListener("load", () => {
+  const deprecateDialog = document.querySelector("#deprecate-dialog");
+
+  const hideDeprecateDialogLocalStorageKey = "hide-deprecate-dialog";
+  if (localStorage[hideDeprecateDialogLocalStorageKey]) {
+    console.log("foo");
+    deprecateDialog.remove();
+  }
+
+  document
+    .querySelector("#deprecate-dialog-close-btn")
+    .addEventListener("mousedown", () => {
+      deprecateDialog.remove();
+      localStorage[hideDeprecateDialogLocalStorageKey] = true;
+    });
+});
